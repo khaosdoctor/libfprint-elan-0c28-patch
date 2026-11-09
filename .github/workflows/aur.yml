@@ -16,6 +16,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container: archlinux:base-devel
+    defaults:
+      run:
+        shell: bash
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -26,7 +29,7 @@ jobs:
       - name: check tag matches PKGBUILD
         if: startsWith(github.ref, 'refs/tags/')
         run: |
-          source PKGBUILD
+          source ./PKGBUILD
           if [ "${GITHUB_REF_NAME#v}" != "$pkgver-$pkgrel" ]; then
             echo "tag $GITHUB_REF_NAME does not match PKGBUILD version $pkgver-$pkgrel"
             exit 1

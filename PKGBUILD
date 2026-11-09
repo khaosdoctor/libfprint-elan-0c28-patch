@@ -4,7 +4,7 @@
 pkgname=libfprint-elan-0c28-patch
 _pkgname=libfprint
 pkgver=1.94.100
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for fingerprint readers, patched for the ELAN 04f3:0c28 press sensor"
 url="https://fprint.freedesktop.org/"
 arch=(x86_64)
