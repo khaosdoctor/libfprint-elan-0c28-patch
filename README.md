@@ -15,7 +15,7 @@ lsusb | grep 04f3:0c28
 
 Stock libfprint lists `04f3:0c28` as supported, and fprintd finds it, but you'll never get a match. Enrolling works (sometimes it fails with `Calibration failed!`), then every `fprintd-verify` comes back `verify-no-match` with a score of 0.
 
-I bought this reader, plugged it in, and spent an evening finding out why. The `elan` driver treats every ELAN sensor as a swipe sensor and stitches frames together based on how the finger moves, but this one is a 96x96 square pad you press and hold. The stitched images come out garbled, and even after fixing the capture, a 96x96 image (about 5x5 mm of fingertip) has too few minutiae for libfprint's NBIS matcher to ever score a match. [docs/how-it-works.md](docs/how-it-works.md) has the details.
+The `elan` driver treats every ELAN sensor as a swipe sensor and stitches frames together based on how the finger moves, but this one is a 96x96 square pad you press and hold. The stitched images come out garbled, and even after fixing the capture, a 96x96 image (about 5x5 mm of fingertip) has too few minutiae for libfprint's NBIS matcher to ever score a match. [docs/how-it-works.md](docs/how-it-works.md) has the details.
 
 This package fixes both: it captures a single sharp frame per touch, and it swaps NBIS for SIGFM, a texture-based matcher written for tiny sensors.
 
@@ -55,7 +55,7 @@ If the patch doesn't apply anymore, upstream changed `elan.c` or the image devic
 
 ## How well it works
 
-These are numbers from my own testing, one person and one sensor, so take them as a rough idea rather than a benchmark:
+Tested with one person and one sensor, so take these as a rough idea rather than a benchmark:
 
 | | Attempts | Result |
 |---|---|---|
