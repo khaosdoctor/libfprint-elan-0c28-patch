@@ -46,19 +46,19 @@ Tested with only this sensor. Most touches match and other fingers get rejected,
 
 ## Troubleshooting
 
-**`Calibration failed!` during enroll.** Your finger was still on the sensor when the next touch started. Lift it all the way between touches.
+**`enroll-unknown-error`, with `Device reported an error during enroll: Calibration failed!` in the fprintd log.** Your finger was still on the sensor when the next touch started. Lift it all the way between touches.
 
-**Verify never matches.** You probably enrolled before installing this. Run `fprintd-delete $USER` and enroll again.
+**`verify-no-match` every time, with `stored print has no SIGFM data, re-enroll this finger` in the log.** You enrolled before installing this. Run `fprintd-delete $USER` and enroll again.
 
-**Verify fails some of the time.** That's normal for a sensor this small. If it fails most of the time, re-enroll and cover more of your finger.
+**`verify-no-match` some of the time.** That's normal for a sensor this small. If it fails most of the time, re-enroll and cover more of your finger.
 
-**`swipe-too-short`.** You lifted your finger too fast, hold it for a second.
+**`enroll-swipe-too-short` or `verify-swipe-too-short`.** You lifted your finger too fast, hold it for a second.
 
 **`enroll-retry-scan`.** The driver threw away a bad capture, touch again.
 
-**`makepkg` fails with `unknown public key`.** Your copy of the maintainer's key is old, fetch it again with the `gpg` line from [installing](#installing).
+**`makepkg` fails with `libfprint git repo ... FAILED (unknown public key 40F65066AD7C16DB)`.** Your copy of the maintainer's key is old, fetch it again with the `gpg` line from [installing](#installing).
 
-**`makepkg` fails with `No module named 'distutils'`.** Your `python3` is probably from pyenv, mise or asdf. Build with the system one:
+**`makepkg` fails at `FAILED: libfprint/FPrint-2.0.gir` with `ModuleNotFoundError: No module named 'distutils'`.** Your `python3` is probably from pyenv, mise or asdf. Build with the system one:
 
 ```bash
 PATH=/usr/bin:$PATH makepkg -si
