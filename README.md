@@ -55,7 +55,7 @@ If the patch doesn't apply anymore, upstream changed `elan.c` or the image devic
 
 ## How well it works
 
-Tested with one person and one sensor, so take these as a rough idea rather than a benchmark:
+Tested with only this sensor:
 
 | | Attempts | Result |
 |---|---|---|
