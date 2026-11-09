@@ -1,4 +1,4 @@
-# libfprint-elan-0c28
+# libfprint-elan-0c28-patch
 
 Patched libfprint for Arch Linux that makes the **ELAN `04f3:0c28`** USB fingerprint reader (sold as the FeinTech FPS00200) actually work with fprintd.
 
@@ -24,8 +24,8 @@ This package fixes both: it captures a single sharp frame per touch, and it swap
 You need `base-devel`. The PKGBUILD is Arch's own `libfprint` PKGBUILD with the patch added, so the build and the test suite are the same as the official package.
 
 ```bash
-git clone https://github.com/khaosdoctor/libfprint-elan-0c28.git
-cd libfprint-elan-0c28
+git clone https://github.com/khaosdoctor/libfprint-elan-0c28-patch.git
+cd libfprint-elan-0c28-patch
 gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys D4C501DA48EB797A081750939449C2F50996635F
 makepkg -si
 ```

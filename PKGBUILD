@@ -1,7 +1,7 @@
 # Based on Arch's libfprint PKGBUILD (Jan Alexander Steffens, Tom Gundersen, Thomas Baechler)
 # Adds press-mode capture and SIGFM matching for the ELAN 04f3:0c28 96x96 sensor.
 
-pkgname=libfprint-elan-0c28
+pkgname=libfprint-elan-0c28-patch
 _pkgname=libfprint
 pkgver=1.94.100
 pkgrel=1

@@ -68,7 +68,7 @@ jobs:
       - if: steps.check-secret.outputs.has_key == 'true'
         uses: KSXGitHub/github-actions-deploy-aur@084b0d9b15415bf9cdb65d44dad1efe37a354050 # v4.2.0
         with:
-          pkgname: libfprint-elan-0c28
+          pkgname: libfprint-elan-0c28-patch
           pkgbuild: ./PKGBUILD
           assets: ./elan-0c28-press-sigfm.patch
           updpkgsums: false

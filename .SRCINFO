@@ -1,4 +1,4 @@
-pkgbase = libfprint-elan-0c28
+pkgbase = libfprint-elan-0c28-patch
 	pkgdesc = Library for fingerprint readers, patched for the ELAN 04f3:0c28 press sensor
 	pkgver = 1.94.100
 	pkgrel = 1
@@ -32,4 +32,4 @@ pkgbase = libfprint-elan-0c28
 	b2sums = 56cbe62a6d4b98d1de90f45bae8de605418802d1b4d8d5dc55a8557a65045b115df51daf8385decdebd8aea79c86103467d5a327cbd461030d450f0e15466d08
 	b2sums = 1bc1089693b1dbce9c488a973920fe092b285f38e3f1452d810d5f4682b1dd00d1265748bae0ed3308cdf95b0fcc55069c15281bcc697c2212289542adee6c88
 
-pkgname = libfprint-elan-0c28
+pkgname = libfprint-elan-0c28-patch
