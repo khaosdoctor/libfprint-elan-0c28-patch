@@ -42,6 +42,8 @@ fprintd-enroll
 
 Enroll asks for a lot of touches. Hold still for a second each time, lift all the way, and move your finger around between touches so you cover more of it.
 
+To use it for sudo, login, polkit prompts or your lock screen, see [docs/using-it.md](docs/using-it.md).
+
 ## Updating
 
 This package won't follow Arch's libfprint updates by itself. When Arch ships a newer libfprint, use ***Flag package out-of-date*** on the [AUR page](https://aur.archlinux.org/packages/libfprint-elan-0c28-patch) and I'll patch and publish the new version, no need to build it yourself.
