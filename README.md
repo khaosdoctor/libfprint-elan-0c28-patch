@@ -84,7 +84,3 @@ sudo G_MESSAGES_DEBUG=all /usr/lib/fprintd -t 2>&1 | grep -E 'elan|sigfm|error'
 SIGFM is by Matthieu Charette, Natasha England-Elbro and Timur Mangliev, the pure-C version here comes from [buxel/libfprint](https://github.com/buxel/libfprint).
 
 The patch is LGPL-2.1-or-later like libfprint, the packaging files are 0BSD, see [LICENSE](LICENSE).
-
-## Publishing
-
-Pushing a tag like `v1.94.100-1` (matching `pkgver-pkgrel`) builds, tests and publishes to the AUR. It needs an `AUR_KEY` secret with an AUR SSH key. Regenerate `.SRCINFO` with `makepkg --printsrcinfo > .SRCINFO` after changing the PKGBUILD.
