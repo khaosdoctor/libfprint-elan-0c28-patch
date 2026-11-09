@@ -15,7 +15,13 @@ Stock libfprint says it supports this reader, and enrolling works, but verify ne
 
 ## Installing
 
-You need `base-devel`.
+It's on the AUR:
+
+```bash
+yay -S libfprint-elan-0c28-patch
+```
+
+Or build it from this repo, you need `base-devel`:
 
 ```bash
 git clone https://github.com/khaosdoctor/libfprint-elan-0c28-patch.git
@@ -38,7 +44,7 @@ Enroll asks for a lot of touches. Hold still for a second each time, lift all th
 
 ## Updating
 
-This package won't follow Arch's libfprint updates by itself. Bump `pkgver`, update the checksum with `makepkg -g`, and rebuild with `makepkg -si`. If the patch doesn't apply anymore, it needs a refresh.
+This package won't follow Arch's libfprint updates by itself. When Arch ships a newer libfprint, use ***Flag package out-of-date*** on the [AUR page](https://aur.archlinux.org/packages/libfprint-elan-0c28-patch) and I'll patch and publish the new version, no need to build it yourself.
 
 ## How well it works
 
