@@ -64,6 +64,8 @@ Tested with only this sensor. Most touches match and other fingers get rejected,
 
 **`enroll-retry-scan`.** The driver threw away a bad capture, touch again.
 
+**`enroll-remove-and-retry`.** Your finger landed before the sensor was ready for it, lift it and touch again.
+
 **`makepkg` fails with `libfprint git repo ... FAILED (unknown public key 40F65066AD7C16DB)`.** Your copy of the maintainer's key is old, fetch it again with the `gpg` line from [installing](#installing).
 
 **`makepkg` fails at `FAILED: libfprint/FPrint-2.0.gir` with `ModuleNotFoundError: No module named 'distutils'`.** Your `python3` is probably from pyenv, mise or asdf. Build with the system one:
