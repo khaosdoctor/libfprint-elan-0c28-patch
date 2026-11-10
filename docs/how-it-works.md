@@ -23,8 +23,8 @@ No amount of capture tuning gets that to 24.
 
 ```mermaid
 flowchart LR
-    A[finger down] --> B[read frames until it lifts]
-    B --> C[drop 2 landing and 2 lifting frames]
+    A[finger down] --> B[read 4 frames]
+    B --> C[drop the landing frame]
     C --> D[pick the sharpest frame]
     D --> E{stripe ratio over 0.75?}
     E -- yes --> R[retry the touch]
@@ -36,9 +36,11 @@ flowchart LR
 
 ### Capture
 
-The driver keeps reading frames until you lift your finger. The sensor calibrates against an empty pad before every touch, and if the driver stops while your finger is still down, the next calibration reads your finger as the background and fails with `Calibration failed!` (the background mean is off by thousands, the limit is 500).
+After 4 frames (about 0.4 s) the driver drops the first one (finger still landing), keeps the sharpest of the rest and reports the touch, so `enroll-stage-passed` shows up while your finger is still down. The sharpness is the sum of absolute differences between neighbouring pixels. Averaging frames blurs the ridges whenever the finger shifts slightly, so a single frame works better.
 
-From the frames it read, the driver drops the first two (finger still settling) and the last two (finger lifting), then keeps the sharpest one, measured as the sum of absolute differences between neighbouring pixels. Averaging frames blurs the ridges whenever the finger shifts slightly, so a single frame works better.
+The driver then keeps polling until the sensor says the finger is gone, which is a 200 ms timeout or a `0xaf` reply to the pre-scan command. The sensor calibrates against an empty pad before every touch, and a finger on it during calibration makes it fail with `Calibration failed!` (the background mean is off by thousands, the limit is 500). For this sensor the driver retries the calibration every 300 ms, up to 20 times, before it gives up. A finger that lands right as calibration finishes ends up in the background, so the first frame comes out darker than the background, and the driver answers with `enroll-remove-and-retry`.
+
+The sensor also answers `0xaf` while it settles after a touch, with nothing on it. Before any frame was read, the driver just polls again 100 ms later, and it waits for the first touch with no timeout.
 
 Some captures come out as vertical stripe noise instead of ridges. The driver divides the standard deviation of the column means by the standard deviation of the whole image. Real ridges stay at or below ~0.65 and stripe noise is around 0.8, so anything over `ELAN_PRESS_MAX_STRIPE_RATIO` (0.75) is rejected with a retry. Without this check a noise frame could be enrolled as your finger and match another noise frame later.
 

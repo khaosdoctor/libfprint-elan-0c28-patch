@@ -40,7 +40,7 @@ fprintd-delete $USER
 fprintd-enroll
 ```
 
-Enroll asks for a lot of touches. Hold still until it says `enroll-stage-passed`, then lift all the way, and move your finger around between touches so you cover more of it.
+The first touch prints nothing, fprintd uses it to check the finger isn't enrolled already, so tap and lift. After that, enroll asks for a lot of touches. Hold still until it says `enroll-stage-passed`, then lift all the way, and move your finger around between touches so you cover more of it.
 
 To use it for sudo, login, polkit prompts or your lock screen, see [docs/using-it.md](docs/using-it.md).
 
